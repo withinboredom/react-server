@@ -20,30 +20,38 @@ response object, the middleware can check the promise from the verifier to
 ensure the user has a valid jwt.  If the user does not, the middleware can
 change the response to be a 403 forbidden.
 
+
 # What does a react-server middleware look like?
 
 Here's a simple react-server middleware that only sets the ContentType header
 to application/json for json responses.
 
-	module.exports = class JsonEndpoint {
+```js
+export default class JsonEndpoint {
 
-		// What is this and do we need it?
-		static middleware() {
-			return [{ setConfigValues(){ return { isRawResponse: true }; } }];
-		}
-
-		handleRoute(next) {
-			return next();
-		}
-
-		getContentType() {
-			return 'application/json';
-		}
-
-		getResponseData(next) {
-			return next().then(object => JSON.stringify(object));
-		}
+	static middleware() {
+		return [{
+			setConfigValues(){ return { isRawResponse: true } }
+		}];
 	}
+
+	handleRoute(next) {
+		return next();
+	}
+
+	getContentType() {
+		return 'application/json';
+	}
+
+	getResponseData(next) {
+		return next().then(object => JSON.stringify({
+			payload: object,
+			resultCode: 0,
+		}));
+	}
+}
+```
+
 
 # How do I find out more?
 
