@@ -191,6 +191,4 @@ code, the page lifecycle is declared at ll 265 of `renderMiddleware.js`; the
 code is fairly well commented.
 
 [//]: # see http://stackoverflow.com/questions/4823468/comments-in-markdown
-[//]: # TODO: It would be nice to link to blog posts here, and links to a static
-[//]: # [github page](https://gist.github.com/domenic/ec8b0fc8ab45f39403dd) with
-[//]: # annotated source code using [docco](http://jashkenas.github.io/docco/)
+[//]: # TODO: Generate annotated source code on travis

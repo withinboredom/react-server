@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>logging.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page_wrapper">
+            <div id="jump_page">
+              
+                
+                <a class="source" href="ClientController.html">
+                  ClientController.js
+                </a>
+              
+                
+                <a class="source" href="ClientRequest.html">
+                  ClientRequest.js
+                </a>
+              
+                
+                <a class="source" href="ExpressServerRequest.html">
+                  ExpressServerRequest.js
+                </a>
+              
+                
+                <a class="source" href="FramebackController.html">
+                  FramebackController.js
+                </a>
+              
+                
+                <a class="source" href="ReactServerAgent.html">
+                  ReactServerAgent.js
+                </a>
+              
+                
+                <a class="source" href="client.html">
+                  client.js
+                </a>
+              
+                
+                <a class="source" href="common.html">
+                  common.js
+                </a>
+              
+                
+                <a class="source" href="config.html">
+                  config.js
+                </a>
+              
+                
+                <a class="source" href="constants.html">
+                  constants.js
+                </a>
+              
+                
+                <a class="source" href="logging.html">
+                  logging.js
+                </a>
+              
+                
+                <a class="source" href="renderMiddleware.html">
+                  renderMiddleware.js
+                </a>
+              
+                
+                <a class="source" href="server.html">
+                  server.js
+                </a>
+              
+            </div>
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>logging.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/*
+ * Include a logger in your module with:
+ *
+ *   var logger = require('react-server').logging.getLogger(__LOGGER__);
+ *
+ * This `logger` has methods for each level specified in logging/common.js.
+ *
+ * Example:
+ *
+ *   logger.debug(`result: ${result}`);
+ *
+ * Standard log-level methods accept an additional argument, which can be an
+ * arbitrary data structure.
+ *
+ * Example:
+ *
+ *   try {
+ *       some_work();
+ *   } catch (err) {
+ *       logger.error("Error calling some_work()", err);
+ *   }
+ *
+ * It *also* has a `time` method for timing named metrics.  Metric names
+ * should be dot-separated and be few in number (i.e. don't include object
+ * IDs or other variables with many potential values).
+ *
+ * Example:
+ *
+ *   logger.time(`result.${http_status_code}`, time_in_ms);
+ *
+ * Another way to log timings is with a `timer` object.
+ *
+ * Example:
+ *
+ *   var timer = logger.timer('some_work');
+ *
+ *   some_work().then(timer.stop);
+ *
+ * It *also* has a `gauge` method for tracking integer values.
+ *
+ * Example:
+ *
+ *   logger.gauge("response_size_in_bytes", size_in_bytes);
+ *
+ * If you need more than one logger in your module, you can distinguish them
+ * with labels:
+ *
+ * Example:
+ *
+ *   var fooLogger = logging.getLogger(__LOGGER__({ label: "foo" }));
+ *   var barLogger = logging.getLogger(__LOGGER__({ label: "bar" }));
+ *
+ */</span>
+<span class="hljs-keyword">if</span> (SERVER_SIDE) {
+	<span class="hljs-built_in">module</span>.exports = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./logging/server.js'</span>);
+} <span class="hljs-keyword">else</span> {
+	<span class="hljs-built_in">module</span>.exports = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./logging/client.js'</span>);
+}</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>
